@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "actune"
+version = "0.1.0"
+description = "ActTune action-conditioned precision and GPU operating-point control"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+cuda = ["torch>=2.6", "triton>=3.2", "ninja"]
+
+[project.scripts]
+actune = "actune.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["actune*"]
+
+[tool.setuptools.package-data]
+"actune.kernels" = ["*.cu", "*.cpp"]
